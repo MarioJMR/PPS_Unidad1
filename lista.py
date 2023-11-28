@@ -4,39 +4,36 @@ Python” de Jon Vadillo e inclúyelo en un fichero llamado lista.py. Las funcio
 debes usar en el ejercicio 3 deben utilizar OBLIGATORIAMENTE las siguientes
 cabeceras:
 """
-def estaEnRango(valor, minimo, maximo):
-    """Devuelve True si valor se encuentra entre el mínimo y el máximo, False en caso contrario."""
+# lista.py
+
+def esta_en_rango(valor, minimo, maximo):
+    """
+    Devuelve True o False determinando si el valor se encuentra entre el mínimo y el máximo.
+    """
     return minimo <= valor <= maximo
 
-def estaEnLista(valor, lista):
-    """Devuelve True si valor está en la lista, False en caso contrario."""
+def esta_en_lista(valor, lista):
+    """
+    Devuelve True o False determinando si el valor está en la lista.
+    """
     return valor in lista
 
-if __name__ == "__main__":
-    # Ejemplo de uso de las funciones
+def main():
+    # Lista proporcionada
+    numeros_validos = [6, 14, 11, 3, 2, 1, 15, 19]
+
     try:
-        # Solicitar al usuario un valor, mínimo y máximo
-        valor = float(input("Introduce un valor: "))
-        minimo = float(input("Introduce el valor mínimo: "))
-        maximo = float(input("Introduce el valor máximo: "))
+        # Solicitar al usuario que ingrese un número del 1 al 20
+        numero_usuario = int(input("Ingresa un número del 1 al 20: "))
 
-        # Verificar si el valor está en el rango especificado
-        if estaEnRango(valor, minimo, maximo):
-            print(f"{valor} está en el rango entre {minimo} y {maximo}.")
+        # Verificar si el número está en el rango y en la lista
+        if esta_en_rango(numero_usuario, 1, 20) and esta_en_lista(numero_usuario, numeros_validos):
+            print(f"¡El número {numero_usuario} está en el rango y en la lista!")
         else:
-            print(f"{valor} no está en el rango entre {minimo} y {maximo}.")
+            print(f"El número {numero_usuario} no cumple con los requisitos.")
 
-        # Solicitar al usuario una lista y un valor
-        lista = input("Introduce una lista de valores separados por espacios: ").split()
-        valor_buscar = input("Introduce el valor que deseas buscar: ")
-
-        # Convertir la lista a tipos apropiados
-        lista = [float(elemento) for elemento in lista]
-
-        # Verificar si el valor está en la lista
-        if estaEnLista(float(valor_buscar), lista):
-            print(f"{valor_buscar} está en la lista.")
-        else:
-            print(f"{valor_buscar} no está en la lista.")
     except ValueError:
-        print("Error: Introduce valores numéricos válidos.")
+        print("Por favor, ingresa un número válido.")
+
+if __name__ == "__main__":
+    main()
